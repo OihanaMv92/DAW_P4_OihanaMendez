@@ -4,14 +4,14 @@
 package es.studium.LibreriaMVC;
 
 /**
- * @author Alvca
+ * @author oihana
  * ElementoPedido 
  * * Representa un elemento del pedido 
  * * Incluye identificador del libro y cantidad
  */
 public class ElementoPedido { 
 	private int idLibro; 
-	private int cantidad; 
+	private int cantidad; // precio
 	public ElementoPedido(int idLibro, int cantidad) { 
 		this.idLibro = idLibro; 
 		this.cantidad = cantidad; 
@@ -34,7 +34,7 @@ public class ElementoPedido {
 	public String getTitulo() { 
 		return LibreriaMVC.getTitulo(idLibro); 
 	} 
-	public double getPrecio() { 
+	public double getPrecio() {  //
 		return LibreriaMVC.getPrecio(idLibro); 
 	} 
 }

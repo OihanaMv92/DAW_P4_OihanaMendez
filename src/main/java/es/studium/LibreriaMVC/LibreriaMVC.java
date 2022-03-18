@@ -43,7 +43,7 @@ public class LibreriaMVC {
 			Libro libro; 
 			while(rs.next()) { 
 				libro = new Libro(rs.getInt("idLibro"), rs.getString("nombreLibro"), rs.getString("nombreAutor"), rs.getDouble("precioLibro"));
-				listaLibros.add(libro); 
+				listaLibros.add(libro); // array [libro,libro,libro]
 			} 
 		} 
 		catch(Exception ex) { 

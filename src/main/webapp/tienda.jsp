@@ -30,6 +30,7 @@
 			<strong>Elegir un libro y la cantidad:</strong>
 		</p>
 		<form name="AgregarForm" action="shopping" method="POST">
+			<!-- todo: add, idLibro: 0, cantidad: 1 -->
 			<input type="hidden" name="todo" value="add" class="form-select"> 
 			Título: 
 			<select	name="idLibro" class="form-select mb-4">
@@ -60,7 +61,7 @@
 		// Scriplet 2: Chequea el contenido de la cesta
 		ArrayList<ElementoPedido> cesta = (ArrayList<ElementoPedido>) session.getAttribute("carrito");
 		
-		if (cesta != null && cesta.size() > 0)	{
+		if (cesta != null && cesta.size() > 0)	{ // si la cesta no está vacia
 		%>
 			<p>
 				<strong>Tu cesta contiene:</strong>
@@ -75,8 +76,7 @@
 				</tr>
 				<%
 				// Scriplet 3: Muestra los libros del carrito
-				for (int i = 0; i < cesta.size(); i++)
-				{
+				for (int i = 0; i < cesta.size(); i++) { // una vuelta por cada elemento pedido
 					ElementoPedido elementoPedido = cesta.get(i);
 				%>
 				<tr>
@@ -85,6 +85,8 @@
 						<input type="hidden" name="todo" value="remove">
 						<input type="hidden" name="indiceElemento" value="<%=i%>">
 						
+						<!--  ELEMENTOPEDIDO: idLibro, cantidad -->
+						<!--  listaLibros(idLibro) -->
 						<td><%=elementoPedido.getAutor()%></td>
 						<td><%=elementoPedido.getTitulo()%></td>
 						<td ><%=elementoPedido.getPrecio()%> €</td>
