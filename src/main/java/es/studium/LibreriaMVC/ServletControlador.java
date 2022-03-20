@@ -51,7 +51,7 @@ public class ServletControlador extends HttpServlet {
 		if(todo==null) { // 
 			// Primer acceso, redirigir a tienda.jsp
 			nextPage = "/tienda.jsp";
-		} else if(todo.equals("add")) { // ADD
+		} else if(todo.equals("add")) { // añadir cesta btn.
 			
 			// Mandado por tienda.jsp con los parámetros idLibro y cantidad
 			// Creamos un elementoPedido y lo añadimos al carrito
@@ -93,8 +93,12 @@ public class ServletControlador extends HttpServlet {
 			}
 			// Volvemos a tienda.jps para seguir con la compra
 			nextPage = "/tienda.jsp";
-		}
-		else if(todo.equals("remove")) {
+			
+			
+			
+			
+			
+		} else if(todo.equals("remove")) {
 			// Enviado por tienda.jsp con el parámetro indiceElemento
 			// Borra el elemento indiceElemento del carrito
 			int indiceCarrito = Integer.parseInt(request.getParameter("indiceElemento"));
@@ -113,12 +117,12 @@ public class ServletControlador extends HttpServlet {
 				cantidadTotalOrdenada += cantidadOrdenada;
 			}
 			// Da formato al precio con dos decimales
-			StringBuilder sb = new StringBuilder();
-			Formatter formatter = new Formatter(sb);
+			StringBuilder precioTotalFormateado = new StringBuilder();
+			Formatter formatter = new Formatter(precioTotalFormateado);
 			formatter.format("%.2f", precioTotal);
 			formatter.close();
 			// Coloca el precioTotal y la cantidadtotal en el request
-			request.setAttribute("precioTotal", sb.toString());
+			request.setAttribute("precioTotal", precioTotalFormateado.toString()); // precioTotal: precioTotalFormateado
 			request.setAttribute("cantidadTotal", cantidadTotalOrdenada+"");
 			// Redirige a checkout.jsp
 			nextPage = "/checkout.jsp";
